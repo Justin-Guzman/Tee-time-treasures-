@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # Routes for the Message resource:
   get("/", { :controller => "listings", :action => "index" })
+
+  get("/welcome", { :controller => "listings", :action => "welcome" })
   # CREATE
   post("/insert_message", { :controller => "messages", :action => "create" })
           

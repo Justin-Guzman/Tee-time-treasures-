@@ -18,6 +18,12 @@ class ListingsController < ApplicationController
   end
 
   def create
+    user_id = session.fetch(:user_id)
+    user = params.fetch("query_user_id")
+    title = params.fetch("query_title")
+    item_description = params.fetch("query_description")
+    price = params.fetch("query_price")
+    image = params.fetch("query_image")
     the_listing = Listing.new
     the_listing.title = params.fetch("query_title")
     the_listing.description = params.fetch("query_description")
@@ -65,4 +71,9 @@ class ListingsController < ApplicationController
 
     redirect_to("/listings", { :notice => "Listing deleted successfully."} )
   end
+
+  def welcome
+
+    render({ :template => "listings/welcome.html.erb" })
+  end 
 end
