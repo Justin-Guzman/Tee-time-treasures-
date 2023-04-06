@@ -1,0 +1,176 @@
+<div>
+  <div>
+    <h1>
+      Listing #<%= @the_listing.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/listings">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_listing/<%= @the_listing.id %>">
+          Delete listing
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_listing.title %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_listing.description %>
+      </dd>
+
+      <dt>
+        Price
+      </dt>
+      <dd>
+        <%= @the_listing.price %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @the_listing.image %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_listing.status %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_listing.category_id %>
+      </dd>
+
+      <dt>
+        Seller
+      </dt>
+      <dd>
+        <%= @the_listing.seller_id %>
+      </dd>
+
+      <dt>
+        Buyer
+      </dt>
+      <dd>
+        <%= @the_listing.buyer_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_listing.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_listing.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit listing
+    </h2>
+
+    <form action="/modify_listing/<%= @the_listing.id %>"  method="post" >
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_listing.title %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_listing.description %>">
+      </div>
+
+      <div>
+        <label for="price_box">
+          Price
+        </label>
+
+        <input type="text" id="price_box" name="query_price" value="<%= @the_listing.price %>">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_listing.image %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_listing.status %>">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_listing.category_id %>">
+      </div>
+
+      <div>
+        <label for="seller_id_box">
+          Seller
+        </label>
+
+        <input type="text" id="seller_id_box" name="query_seller_id" value="<%= @the_listing.seller_id %>">
+      </div>
+
+      <div>
+        <label for="buyer_id_box">
+          Buyer
+        </label>
+
+        <input type="text" id="buyer_id_box" name="query_buyer_id" value="<%= @the_listing.buyer_id %>">
+      </div>
+
+      <button>
+        Update listing
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
