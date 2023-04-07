@@ -63,15 +63,15 @@
         <input type="text" id="category_id_box" name="query_category_id">
       </div>
 
-    <%#  <div>
+      <div>
         <label for="seller_id_box">
-          Seller
+          
         </label>
 
-        <input type="text" id="seller_id_box" name="query_seller_id">
+        <input type="hidden" id="seller_id_box" name="query_seller_id">
       </div>
 
-      <div>
+     <%# <div>
         <label for="buyer_id_box">
           Buyer
         </label>
@@ -119,11 +119,11 @@
           Category
         </th>
 
-      <%#  <th>
+       <th>
           Seller
         </th>
 
-        <th>
+     <%#   <th>
           Buyer
         </th> %>
 
@@ -169,11 +169,11 @@
           <%= a_listing.category_id %>
         </td>
 
-     <%#   <td>
-          <%= a_listing.seller_id >
+        <td>
+          <%= a_listing.seller_id.name %>
         </td>
 
-        <td>
+     <%#    <td>
           <%= a_listing.buyer_id %
         </td> %>
 

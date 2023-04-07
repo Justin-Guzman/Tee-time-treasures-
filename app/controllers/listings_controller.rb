@@ -1,10 +1,14 @@
 class ListingsController < ApplicationController
   def index
+    if @current_user == nil 
+      render({ :template => "listings/welcome.html.erb" })
+      else 
     matching_listings = Listing.all
 
     @list_of_listings = matching_listings.order({ :created_at => :desc })
 
     render({ :template => "listings/index.html.erb" })
+      end
   end
 
   def show
@@ -25,6 +29,7 @@ class ListingsController < ApplicationController
     price = params.fetch("query_price")
     image = params.fetch("query_image")
     category = params.fetch("query_category_id")
+    seller = params.fetch("query_seller_id")
     #buyer_id = params.fetch("query_buyer_id")
     the_listing = Listing.new
     #the_listing.user_id = user_id
@@ -34,7 +39,7 @@ class ListingsController < ApplicationController
     the_listing.image = image
     #the_listing.status = params.fetch("query_status")
     the_listing.category_id = category
-    #the_listing.seller_id = params.fetch("query_seller_id")
+    the_listing.seller_id = seller
     #the_listing.buyer_id = buyer_id
 
     if the_listing.valid?
