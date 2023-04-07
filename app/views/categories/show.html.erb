@@ -1,19 +1,13 @@
 <div>
   <div>
     <h1>
-      Category #<%= @the_category.id %> details
+      Category <%= @the_category.name %> details
     </h1>
 
     <div>
       <div>
         <a href="/categories">
           Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_category/<%= @the_category.id %>">
-          Delete category
         </a>
       </div>
     </div>
@@ -42,30 +36,4 @@
     </dl>
   </div>
 </div>
-
-<hr>
-
-
-<div>
-  <div>
-    <h2>
-      Edit category
-    </h2>
-
-    <form action="/modify_category/<%= @the_category.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name" value="<%= @the_category.name %>">
-      </div>
-
-      <button>
-        Update category
-      </button>
-    </form>
-  </div>
-</div>
-
 <hr>

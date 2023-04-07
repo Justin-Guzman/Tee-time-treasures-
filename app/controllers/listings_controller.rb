@@ -39,7 +39,7 @@ class ListingsController < ApplicationController
     the_listing.image = image
     #the_listing.status = params.fetch("query_status")
     the_listing.category_id = category
-    the_listing.seller_id = seller
+    the_listing.seller_id = user_id
     #the_listing.buyer_id = buyer_id
 
     if the_listing.valid?

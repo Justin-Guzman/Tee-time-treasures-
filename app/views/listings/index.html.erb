@@ -64,10 +64,6 @@
       </div>
 
       <div>
-        <label for="seller_id_box">
-          
-        </label>
-
         <input type="hidden" id="seller_id_box" name="query_seller_id">
       </div>
 
@@ -153,9 +149,10 @@
           <%= a_listing.description %>
         </td>
 
-        <td>
-          <%= a_listing.price %>
-        </td>
+          <td>
+        <%= number_to_currency(a_listing.price, unit: "$") %>
+          </td>
+        
 
         <td>
           <%= a_listing.image %>
@@ -170,7 +167,7 @@
         </td>
 
         <td>
-          <%= a_listing.seller_id.name %>
+          <%= a_listing.seller_id %>
         </td>
 
      <%#    <td>
