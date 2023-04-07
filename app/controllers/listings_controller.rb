@@ -25,6 +25,7 @@ class ListingsController < ApplicationController
     price = params.fetch("query_price")
     image = params.fetch("query_image")
     category = params.fetch("query_category_id")
+    #buyer_id = params.fetch("query_buyer_id")
     the_listing = Listing.new
     #the_listing.user_id = user_id
     the_listing.title = title
@@ -34,7 +35,7 @@ class ListingsController < ApplicationController
     #the_listing.status = params.fetch("query_status")
     the_listing.category_id = category
     #the_listing.seller_id = params.fetch("query_seller_id")
-    #the_listing.buyer_id = params.fetch("query_buyer_id")
+    #the_listing.buyer_id = buyer_id
 
     if the_listing.valid?
       the_listing.save
