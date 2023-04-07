@@ -19,20 +19,22 @@ class ListingsController < ApplicationController
 
   def create
     user_id = session.fetch(:user_id)
-    user = params.fetch("query_user_id")
+    #user = params.fetch("query_user_id")
     title = params.fetch("query_title")
     item_description = params.fetch("query_description")
     price = params.fetch("query_price")
     image = params.fetch("query_image")
+    category = params.fetch("query_category_id")
     the_listing = Listing.new
-    the_listing.title = params.fetch("query_title")
-    the_listing.description = params.fetch("query_description")
-    the_listing.price = params.fetch("query_price")
-    the_listing.image = params.fetch("query_image")
-    the_listing.status = params.fetch("query_status")
-    the_listing.category_id = params.fetch("query_category_id")
-    the_listing.seller_id = params.fetch("query_seller_id")
-    the_listing.buyer_id = params.fetch("query_buyer_id")
+    #the_listing.user_id = user_id
+    the_listing.title = title
+    the_listing.description = item_description
+    the_listing.price = price
+    the_listing.image = image
+    #the_listing.status = params.fetch("query_status")
+    the_listing.category_id = category
+    #the_listing.seller_id = params.fetch("query_seller_id")
+    #the_listing.buyer_id = params.fetch("query_buyer_id")
 
     if the_listing.valid?
       the_listing.save

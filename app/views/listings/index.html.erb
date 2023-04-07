@@ -47,13 +47,13 @@
         <input type="text" id="image_box" name="query_image">
       </div>
 
-      <div>
+     <%# <div>
         <label for="status_box">
           Status
-        </label>
+        </label> 
 
         <input type="text" id="status_box" name="query_status">
-      </div>
+      </div> %>
 
       <div>
         <label for="category_id_box">
@@ -63,7 +63,7 @@
         <input type="text" id="category_id_box" name="query_category_id">
       </div>
 
-      <div>
+    <%#  <div>
         <label for="seller_id_box">
           Seller
         </label>
@@ -77,7 +77,7 @@
         </label>
 
         <input type="text" id="buyer_id_box" name="query_buyer_id">
-      </div>
+      </div> %>
 
       <button>
         Create listing
@@ -111,21 +111,21 @@
           Image
         </th>
 
-        <th>
+       <%# <th>
           Status
-        </th>
+        </th> %>
 
         <th>
           Category
         </th>
 
-        <th>
+      <%#  <th>
           Seller
         </th>
 
         <th>
           Buyer
-        </th>
+        </th> %>
 
         <th>
           Created at
@@ -161,21 +161,21 @@
           <%= a_listing.image %>
         </td>
 
-        <td>
-          <%= a_listing.status %>
-        </td>
+      <%#  <td>
+          <%= a_listing.status >
+        </td> %>
 
         <td>
           <%= a_listing.category_id %>
         </td>
 
-        <td>
-          <%= a_listing.seller_id %>
+     <%#   <td>
+          <%= a_listing.seller_id >
         </td>
 
         <td>
-          <%= a_listing.buyer_id %>
-        </td>
+          <%= a_listing.buyer_id %
+        </td> %>
 
         <td>
           <%= time_ago_in_words(a_listing.created_at) %> ago
