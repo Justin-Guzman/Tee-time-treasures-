@@ -1,0 +1,72 @@
+<div>
+    <h2>
+      Add a your item
+    </h2>
+
+    <form action="/insert_listing" method="post">
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description">
+      </div>
+
+      <div>
+        <label for="price_box">
+          Price
+        </label>
+
+        <input type="text" id="price_box" name="query_price">
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image">
+      </div>
+
+     <%# <div>
+        <label for="status_box">
+          Status
+        </label> 
+
+        <input type="text" id="status_box" name="query_status">
+      </div> %>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id">
+      </div>
+
+      <div>
+        <input type="hidden" id="seller_id_box" name="query_seller_id">
+      </div>
+
+     <%# <div>
+        <label for="buyer_id_box">
+          Buyer
+        </label>
+
+        <input type="text" id="buyer_id_box" name="query_buyer_id">
+      </div> %>
+
+      <button>
+        Create listing
+      </button>
+    </form>
+    <a href="/listings">Go back!</a>
+  </div>

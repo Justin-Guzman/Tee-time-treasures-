@@ -10,12 +10,6 @@
           Go back
         </a>
       </div>
-
-      <div>
-        <a href="/delete_listing/<%= @the_listing.id %>">
-          Delete listing
-        </a>
-      </div>
     </div>
 
     <dl>
@@ -97,6 +91,7 @@
 
 <div>
   <div>
+  <% if session.fetch(:user_id) == @the_listing.seller_id %>
     <h2>
       Edit listing
     </h2>
@@ -166,9 +161,16 @@
         <input type="text" id="buyer_id_box" name="query_buyer_id" value="<%= @the_listing.buyer_id %>">
       </div>
 
+       <div>
+        <a href="/delete_listing/<%= @the_listing.id %>">
+          Delete listing
+        </a>
+      </div>
+
       <button>
         Update listing
       </button>
+      <% end %>
     </form>
   </div>
 </div>

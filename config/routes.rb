@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get("/welcome", { :controller => "listings", :action => "welcome" })
 
+  get("/listings/new", { :controller => "listings", :action => "new" })
+
   # CREATE
   post("/insert_message", { :controller => "messages", :action => "create" })
           

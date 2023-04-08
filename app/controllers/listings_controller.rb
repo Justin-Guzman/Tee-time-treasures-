@@ -84,4 +84,9 @@ class ListingsController < ApplicationController
 
     render({ :template => "listings/welcome.html.erb" })
   end 
-end
+
+  def new 
+
+    render({ :template => "listings/new.html.erb" })
+    end
+  end 
