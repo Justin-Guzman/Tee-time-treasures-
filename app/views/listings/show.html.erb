@@ -63,6 +63,13 @@
       </dd>
 
       <dt>
+        Location
+      </dt>
+      <dd>
+       
+      </dd>
+
+      <dt>
         Buyer
       </dt>
       <dd>
@@ -147,18 +154,18 @@
 
       <div>
         <label for="seller_id_box">
-          Seller
+
         </label>
 
-        <input type="text" id="seller_id_box" name="query_seller_id" value="<%= @the_listing.seller_id %>">
+        <input type="hidden" id="seller_id_box" name="query_seller_id" value="<%= @the_listing.seller_id %>">
       </div>
 
       <div>
         <label for="buyer_id_box">
-          Buyer
+          
         </label>
 
-        <input type="text" id="buyer_id_box" name="query_buyer_id" value="<%= @the_listing.buyer_id %>">
+        <input type="hidden" id="buyer_id_box" name="query_buyer_id" value="<%= @the_listing.buyer_id %>">
       </div>
 
        <div>

@@ -51,4 +51,9 @@ class CategoriesController < ApplicationController
 
     redirect_to("/categories", { :notice => "Category deleted successfully."} )
   end
+
+  def category
+
+    render({ :template => "categories/new_category.html.erb" })
+  end 
 end

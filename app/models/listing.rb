@@ -21,6 +21,16 @@ class Listing < ApplicationRecord
 
   has_many(:messages, { :class_name => "Message", :foreign_key => "listing_id", :dependent => :destroy })
 
+  validates :title, presence: true
+
+  validates :description, presence: true
+
+  validates :price, presence: true
+
+  validates :image, presence: true
+
+  validates :category_id, presence: true
+
 
 
   #belongs_to(:category, { :required => true, :class_name => "Category", :foreign_key => "category_id" })

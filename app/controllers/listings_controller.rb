@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
     matching_listings = Listing.where({ :id => the_id })
 
     @the_listing = matching_listings.at(0)
+    
 
     render({ :template => "listings/show.html.erb" })
   end
