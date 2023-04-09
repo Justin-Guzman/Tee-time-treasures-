@@ -7,6 +7,7 @@ class ListingsController < ApplicationController
 
     @list_of_listings = matching_listings.order({ :created_at => :desc })
 
+
     render({ :template => "listings/index.html.erb" })
       end
   end
@@ -17,6 +18,8 @@ class ListingsController < ApplicationController
     matching_listings = Listing.where({ :id => the_id })
 
     @the_listing = matching_listings.at(0)
+
+    @categories = Category.all
     
 
     render({ :template => "listings/show.html.erb" })
@@ -87,6 +90,7 @@ class ListingsController < ApplicationController
   end 
 
   def new 
+    @categories = Category.all
 
     render({ :template => "listings/new.html.erb" })
     end

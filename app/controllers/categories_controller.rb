@@ -53,7 +53,7 @@ class CategoriesController < ApplicationController
   end
 
   def category
-
+ 
     render({ :template => "categories/new_category.html.erb" })
   end 
 end

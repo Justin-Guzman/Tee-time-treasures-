@@ -144,13 +144,17 @@
         <input type="text" id="status_box" name="query_status" value="<%= @the_listing.status %>">
       </div>
 
-      <div>
-        <label for="category_id_box">
-          Category
-        </label>
-
-        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_listing.category_id %>">
-      </div>
+<div>
+  <label for="category_id_box">
+    Category
+  </label>
+  <select id="category_id_box" name="query_category_id">
+     <% @categories.each do |category| %>
+     <option value="<%= category.id %>"><%= category.name %>
+     </option>
+      <% end %>
+  </select>
+</div>
 
       <div>
         <label for="seller_id_box">
