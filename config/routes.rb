@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   # READ
   get("/messages", { :controller => "messages", :action => "index" })
   
+  post("/messages", { :controller => "messages", :action => "index" })
+
   get("/messages/:path_id", { :controller => "messages", :action => "show" })
   
   # UPDATE

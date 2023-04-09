@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Listing #<%= @the_listing.id %> details
+     <%= @the_listing.title %> details
     </h1>
 
     <div>
@@ -91,6 +91,25 @@
       </dd>
     </dl>
   </div>
+</div>
+
+<div>
+  Contact <%= @the_listing.seller_id %> in order to purchase <%= @the_listing.title %>
+</div>
+
+<div>
+  <%= form_with(model: @message, url: messages_path) do |form| %>
+    <%= form.hidden_field :sender_id, value: @sender_id %>
+    <%= form.hidden_field :item_id, value: @the_listing.id %>
+    <%= form.hidden_field :recipient_id, value: @recipient_id %>
+
+    <div>
+      <%= form.label :body, "Message #{@recipient_id}" %>
+      <%= form.text_area :body, class: "form-control", placeholder: "Message #{@recipient_id}" %>
+    </div>
+
+    <%= form.submit "Send" %>
+  <% end %>
 </div>
 
 <hr>

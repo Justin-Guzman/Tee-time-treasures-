@@ -20,6 +20,8 @@ class ListingsController < ApplicationController
     @the_listing = matching_listings.at(0)
 
     @categories = Category.all
+
+    @user = User.all
     
 
     render({ :template => "listings/show.html.erb" })
