@@ -1,0 +1,21 @@
+<form id="question-form">
+  <input type="text" name="question">
+  <input type="submit" value="Ask">
+</form>
+<div id="answer"></div>
+
+<script>
+  $(document).on('submit', '#question-form', function(event) {
+    event.preventDefault();
+    var question = $(this).serialize();
+    $.ajax({
+      url: '/questions',
+      method: 'POST',
+      data: question,
+      dataType: 'json',
+      success: function(response) {
+        $('#answer').html(response.answer);
+      }
+    });
+  });
+</script>
