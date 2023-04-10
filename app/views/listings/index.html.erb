@@ -79,11 +79,12 @@
         </td> %>
 
         <td>
-          <%= a_listing.category_id %>
+           <% category = Category.find(a_listing.category_id) %>
+           <%= category.name %>
         </td>
 
         <td>
-          <%= a_listing.seller_id %>
+          <%= a_listing.seller.name %>
         </td>
 
      <%#    <td>

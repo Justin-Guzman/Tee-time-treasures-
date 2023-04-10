@@ -52,14 +52,15 @@
         Category
       </dt>
       <dd>
-        <%= @the_listing.category_id %>
+         <% category = Category.find(@the_listing.category_id) %>
+         <%= category.name %>
       </dd>
 
       <dt>
         Seller
       </dt>
       <dd>
-        <%= @the_listing.seller_id %>
+        <%= @the_listing.seller.name %>
       </dd>
 
       <dt>
@@ -94,7 +95,7 @@
 </div>
 
 <div>
-  Contact <%= @the_listing.seller_id %> in order to purchase <%= @the_listing.title %>
+  Contact <%= @the_listing.seller.name %> in order to purchase <%= @the_listing.title %>
 </div>
 
 <div>
