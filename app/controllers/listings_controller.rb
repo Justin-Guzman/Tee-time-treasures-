@@ -33,10 +33,12 @@ class ListingsController < ApplicationController
     title = params.fetch("query_title")
     item_description = params.fetch("query_description")
     price = params.fetch("query_price")
-    image = params.fetch("query_image")
+    image = params.fetch(:image)
     category = params.fetch("query_category_id")
     seller = params.fetch("query_seller_id")
     #buyer_id = params.fetch("query_buyer_id")
+
+    
     the_listing = Listing.new
     #the_listing.user_id = user_id
     the_listing.title = title

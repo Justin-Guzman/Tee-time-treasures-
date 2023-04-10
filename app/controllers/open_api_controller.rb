@@ -11,7 +11,7 @@ class OpenApiController < ApplicationController
     )
     answer = response.choices.first.text.strip
     render json: { answer: answer }
-    render({ :template => "open_api/index.html.erb" })
+    
   end
   def index
 
