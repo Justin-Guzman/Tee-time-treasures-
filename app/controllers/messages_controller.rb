@@ -18,15 +18,16 @@ class MessagesController < ApplicationController
   end
 
   def create
+    #  Parameters: {"sender_id"=>"3", "item_id"=>"31", "recipient_id"=>"1", "body"=>"hey", "commit"=>"Send"}
     the_message = Message.new
-    the_message.body = params.fetch("query_body")
-    the_message.listing_id = params.fetch("query_listing_id")
-    the_message.sender_id = params.fetch("query_sender_id")
-    the_message.recipient_id = params.fetch("query_recipient_id")
+    the_message.body = params.fetch("body")
+    the_message.listing_id = params.fetch("item_id")
+    the_message.sender_id = params.fetch("sender_id")
+    the_message.recipient_id = params.fetch("recipient_id")
 
     if the_message.valid?
       the_message.save
-      redirect_to("/messages", { :notice => "Message created successfully." })
+      redirect_to("/listings/#{the_message.listing_id}", { :notice => "Message created successfully." })
     else
       redirect_to("/messages", { :alert => the_message.errors.full_messages.to_sentence })
     end
@@ -43,7 +44,7 @@ class MessagesController < ApplicationController
 
     if the_message.valid?
       the_message.save
-      redirect_to("/messages/#{the_message.id}", { :notice => "Message updated successfully."} )
+      redirect_to("/messages/#{the_message.id}", { :notice => "Message updated successfully." })
     else
       redirect_to("/messages/#{the_message.id}", { :alert => the_message.errors.full_messages.to_sentence })
     end
@@ -55,6 +56,6 @@ class MessagesController < ApplicationController
 
     the_message.destroy
 
-    redirect_to("/messages", { :notice => "Message deleted successfully."} )
+    redirect_to("/messages", { :notice => "Message deleted successfully." })
   end
 end

@@ -97,5 +97,5 @@ class ListingsController < ApplicationController
     @categories = Category.all
 
     render({ :template => "listings/new.html.erb" })
-    end
+  end
   end 

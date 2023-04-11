@@ -69,7 +69,6 @@
       <dd>
        <iframe>
        <%= src="https://www.google.com/maps/@41.8684311,-87.662324,13.36z" %>
-
        </iframe>
       </dd>
 
@@ -97,19 +96,36 @@
   </div>
 </div>
 
+<%# TODO: list all the messages for this listing %>
+<div class="conversation">
+  <h3>Conversation</h3>
+  <% @the_listing.messages.each do |message| %>
+    <div class="message <%= message.sender == @current_user ? "sent" : "received" %>">
+      <div class="content">
+        <div class="meta">
+          <span class="author"><%= message.sender.name %></span>
+          <span class="time"><%= message.created_at.strftime("%b %d, %Y %I:%M %p") %></span>
+        </div>
+        <div class="text"><%= message.body %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
 <div>
   Contact <%= @the_listing.seller.name %> in order to purchase <%= @the_listing.title %>
 </div>
 
 <div>
   <%= form_with(model: @message, url: messages_path) do |form| %>
-    <%= form.hidden_field :sender_id, value: @sender_id %>
+    <%= form.hidden_field :sender_id, value: @current_user.id %>
     <%= form.hidden_field :item_id, value: @the_listing.id %>
-    <%= form.hidden_field :recipient_id, value: @recipient_id %>
+    <%= form.hidden_field :recipient_id, value: @the_listing.seller.id %>
 
     <div>
-      <%= form.label " #{@recipient_id}" %>
-      <%= form.text_area :body, class: "form-control", placeholder: "Message #{@recipient_id}" %>
+      <%= form.label " #{@the_listing.seller.id}" %>
+      <%= form.text_area :body, class: "form-control", placeholder: "Message #{@the_listing.seller.id}" %>
     </div>
 
     <%= form.submit "Send" %>
