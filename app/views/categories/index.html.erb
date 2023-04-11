@@ -27,10 +27,6 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
         </th>
       </tr>
 
@@ -41,15 +37,12 @@
           <%= a_category.name %>
         </td>
 
-        <td>
-          <%= time_ago_in_words(a_category.created_at) %> ago
-        </td>
-
-        <td>
-          <a href="/categories/<%= a_category.id %>">
+        <%#<td>
+          <a href="/categories/<%= a_category.id %">
             Show details
           </a>
-        </td>
+        </td%>
+        
       </tr>
       <% end %>
     </table>

@@ -1,14 +1,14 @@
 <div>
   <div>
     <h1>
-      List of all messages
+      Messages 
     </h1>
   </div>
 </div>
 
 <hr>
 
-<div>
+<%# <div>
   <div>
     <h2>
       Add a new message
@@ -52,9 +52,8 @@
       </button>
     </form>
   </div>
-</div>
+</div%>
 
-<hr>
 <div>
   <div>
     <table border="1">
@@ -77,11 +76,7 @@
         </th>
 
         <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
+          Sent
         </th>
 
         <th>
@@ -110,15 +105,15 @@
         <td>
           <%= time_ago_in_words(a_message.created_at) %> ago
         </td>
-        <td>
-          <%= time_ago_in_words(a_message.updated_at) %> ago
+        <%# <td>
+          <%= time_ago_in_words(a_message.updated_at) % ago
         </td>
 
         <td>
-          <a href="/messages/<%= a_message.id %>">
+          <a href="/messages/<%= a_message.id %">
             Show details
           </a>
-        </td>
+        </td%>
       </tr>
       <% end %>
     </table>
