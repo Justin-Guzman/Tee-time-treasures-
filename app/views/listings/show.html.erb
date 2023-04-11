@@ -31,7 +31,7 @@
         Price
       </dt>
       <dd>
-        <%= @the_listing.price %>
+        <%= number_to_currency(@the_listing.price, unit: "$") %>
       </dd>
 
       <dt>
@@ -108,7 +108,7 @@
     <%= form.hidden_field :recipient_id, value: @recipient_id %>
 
     <div>
-      <%= form.label :body, "Message #{@recipient_id}" %>
+      <%= form.label " #{@recipient_id}" %>
       <%= form.text_area :body, class: "form-control", placeholder: "Message #{@recipient_id}" %>
     </div>
 
