@@ -1,36 +1,41 @@
-<div >
-  <h5>
+<div class="container">
+  <h5 class="text-center mt-5 mb-4">
     Edit User Account
   </h5>
 
-  <div>
-    <form action="/modify_user" method="post">
-      <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
-      </div>
-      <div>
-        <label for="name_box">Name</label>
-        <input id="name_box" name="query_name" value="<%= @current_user.name %>">
-      </div>
-      <div>
-        <label for="location_box">Location</label>
-        <input id="location_box" name="query_location" value="<%= @current_user.location %>">
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/modify_user" method="post">
+        <div class="form-group">
+          <label for="email_box">Email</label>
+          <input id="email_box" class="form-control" name="query_email" value="<%= @current_user.email %>">
+        </div>
+        <div class="form-group">
+          <label for="name_box">Name</label>
+          <input id="name_box" class="form-control" name="query_name" value="<%= @current_user.name %>">
+        </div>
+        <div class="form-group">
+          <label for="location_box">Location</label>
+          <input id="location_box" class="form-control" name="query_location" value="<%= @current_user.location %>">
+        </div>
 
-      <div>
-        <label for="password_box">Password</label>
-        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-      </div>
-    
-      <div>
-        <label for="password_confirmation_box">Password Confirmation</label>
-        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-      </div>
+        <div class="form-group">
+          <label for="password_box">Password</label>
+          <input id="password_box" class="form-control" name="query_password" placeholder="Choose a password..." type="password">
+        </div>
+      
+        <div class="form-group">
+          <label for="password_confirmation_box">Password Confirmation</label>
+          <input id="password_confirmation_box" class="form-control" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+        </div>
 
-      <button>
-        Update account
-      </button>
-    </form>
+        <button class="btn btn-primary">
+          Update account
+        </button>
+        <a href="/categories" class="btn btn-secondary ml-2">
+          Go back!
+        </a>
+      </form>
+    </div>
   </div>
 </div>

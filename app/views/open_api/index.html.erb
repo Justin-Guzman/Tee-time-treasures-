@@ -1,8 +1,22 @@
-<form id="question-form">
-  <input type="text" name="question">
-  <input type="submit" value="Ask">
-</form>
-<div id="answer"></div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form id="question-form">
+        <div class="form-group">
+          <label for="question">Question:</label>
+          <input type="text" class="form-control" id="question" name="question">
+        </div>
+        <button type="submit" class="btn btn-primary">Ask</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div id="answer"></div>
+    </div>
+  </div>
+</div>
 
 <script>
   $(document).on('submit', '#question-form', function(event) {
@@ -19,3 +33,4 @@
     });
   });
 </script>
+

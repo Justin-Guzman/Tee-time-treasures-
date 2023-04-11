@@ -1,123 +1,75 @@
-<div>
-  <div>
-    <h1>
-      Messages 
-    </h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Messages</h1>
+    </div>
   </div>
 </div>
 
 <hr>
 
-<%# <div>
-  <div>
-    <h2>
-      Add a new message
-    </h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Add a new message</h2>
 
-    <form action="/insert_message" method="post">
-      <div>
-        <label for="body_box">
-          Body
-        </label>
+      <form action="/insert_message" method="post">
+        <div class="form-group">
+          <label for="body_box">Body</label>
+          <input type="text" class="form-control" id="body_box" name="query_body">
+        </div>
 
-        <input type="text" id="body_box" name="query_body">
-      </div>
+        <div class="form-group">
+          <label for="listing_id_box">Listing</label>
+          <input type="text" class="form-control" id="listing_id_box" name="query_listing_id">
+        </div>
 
-      <div>
-        <label for="listing_id_box">
-          Listing
-        </label>
+        <div class="form-group">
+          <label for="sender_id_box">Sender</label>
+          <input type="text" class="form-control" id="sender_id_box" name="query_sender_id">
+        </div>
 
-        <input type="text" id="listing_id_box" name="query_listing_id">
-      </div>
+        <div class="form-group">
+          <label for="recipient_id_box">Recipient</label>
+          <input type="text" class="form-control" id="recipient_id_box" name="query_recipient_id">
+        </div>
 
-      <div>
-        <label for="sender_id_box">
-          Sender
-        </label>
-
-        <input type="text" id="sender_id_box" name="query_sender_id">
-      </div>
-
-      <div>
-        <label for="recipient_id_box">
-          Recipient
-        </label>
-
-        <input type="text" id="recipient_id_box" name="query_recipient_id">
-      </div>
-
-      <button>
-        Create message
-      </button>
-    </form>
+        <button class="btn btn-primary">Create message</button>
+      </form>
+    </div>
   </div>
-</div%>
+</div>
 
-<div>
-  <div>
-    <table border="1">
-      <tr>
-
-        <th>
-          Body
-        </th>
-
-        <th>
-          Listing
-        </th>
-
-        <th>
-          Sender
-        </th>
-
-        <th>
-          Recipient
-        </th>
-
-        <th>
-          Sent
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_messages.each do |a_message| %>
-      <tr>
-
-        <td>
-          <%= a_message.body %>
-        </td>
-
-        <td>
-          <%= a_message.listing.title %>
-        </td>
-
-        <td>
-          <%= a_message.sender.name %>
-        </td>
-
-        <td>
-          <%= a_message.recipient.name %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_message.created_at) %> ago
-        </td>
-        <%# <td>
-          <%= time_ago_in_words(a_message.updated_at) % ago
-        </td>
-
-        <td>
-          <a href="/messages/<%= a_message.id %">
-            Show details
-          </a>
-        </td%>
-      </tr>
-      <% end %>
-    </table>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Body</th>
+            <th>Listing</th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>Sent</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @list_of_messages.each do |a_message| %>
+          <tr>
+            <td><%= a_message.body %></td>
+            <td><%= a_message.listing.title %></td>
+            <td><%= a_message.sender.name %></td>
+            <td><%= a_message.recipient.name %></td>
+            <td><%= time_ago_in_words(a_message.created_at) %> ago</td>
+            <td><a href="/messages/<%= a_message.id %>" class="btn btn-primary">Show details</a></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <hr>
+
