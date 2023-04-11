@@ -9,6 +9,6 @@
 #
 class Category < ApplicationRecord
   has_many(:listings, { :class_name => "Listing", :foreign_key => "category_id", :dependent => :destroy })
-  
-  validates :name, presence: true
+
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 end
