@@ -38,15 +38,15 @@
         Image
       </dt>
       <dd>
-        <%= @the_listing.image %>
+        <img src="<%= @the_listing.image %>" />
       </dd>
 
-      <dt>
+      <%#<dt>
         Status
       </dt>
       <dd>
-        <%= @the_listing.status %>
-      </dd>
+        <%= @the_listing.status >
+      </dd%>
 
       <dt>
         Category
@@ -61,23 +61,21 @@
       </dt>
       <dd>
         <%= @the_listing.seller.name %>
-      </dd>
+      </dd> 
 
       <dt>
         Location
       </dt>
       <dd>
-       <iframe>
-       <%= src="https://www.google.com/maps/@41.8684311,-87.662324,13.36z" %>
-       </iframe>
+       <%= @the_listing.seller.location %>
       </dd>
 
-      <dt>
+      <%# <dt>
         Buyer
       </dt>
       <dd>
-        <%= @the_listing.buyer_id %>
-      </dd>
+        <%= @the_listing.buyer_id >
+      </dd%> 
 
       <dt>
         Created at
@@ -124,7 +122,7 @@
     <%= form.hidden_field :recipient_id, value: @the_listing.seller.id %>
 
     <div>
-      <%= form.label " #{@the_listing.seller.id}" %>
+      <%= form.label " #{@the_listing.seller.id} " %>
       <%= form.text_area :body, class: "form-control", placeholder: "Message #{@the_listing.seller.id}" %>
     </div>
 
@@ -142,7 +140,7 @@
       Edit listing
     </h2>
 
-    <form action="/modify_listing/<%= @the_listing.id %>"  method="post" >
+    <form action="/modify_listing/<%= @the_listing.id %>"  method="post" enctype="multipart/form-data" >
       <div>
         <label for="title_box">
           Title
@@ -172,16 +170,16 @@
           Image
         </label>
 
-        <input type="text" id="image_box" name="query_image" value="<%= @the_listing.image %>">
+        <input type="file" id="image_box" name="query_image" value="<%= @the_listing.image %>">
       </div>
 
-      <div>
+      <%#<div>
         <label for="status_box">
           Status
         </label>
 
-        <input type="text" id="status_box" name="query_status" value="<%= @the_listing.status %>">
-      </div>
+        <input type="text" id="status_box" name="query_status" value="<%= @the_listing.status >">
+      </div%>
 
 <div>
   <label for="category_id_box">

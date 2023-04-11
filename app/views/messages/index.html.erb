@@ -59,9 +59,6 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Body
@@ -93,24 +90,21 @@
 
       <% @list_of_messages.each do |a_message| %>
       <tr>
-        <td>
-          <%= a_message.id %>
-        </td>
 
         <td>
           <%= a_message.body %>
         </td>
 
         <td>
-          <%= a_message.listing_id %>
+          <%= a_message.listing.title %>
         </td>
 
         <td>
-          <%= a_message.sender_id %>
+          <%= a_message.sender.name %>
         </td>
 
         <td>
-          <%= a_message.recipient_id %>
+          <%= a_message.recipient.name %>
         </td>
 
         <td>

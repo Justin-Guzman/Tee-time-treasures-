@@ -30,36 +30,36 @@
         Listing
       </dt>
       <dd>
-        <%= @the_message.listing_id %>
+        <%= @the_message.listing.title %>
       </dd>
 
       <dt>
         Sender
       </dt>
       <dd>
-        <%= @the_message.sender_id %>
+        <%= @the_message.sender.name %>
       </dd>
 
       <dt>
         Recipient
       </dt>
       <dd>
-        <%= @the_message.recipient_id %>
+        <%= @the_message.recipient.name %>
       </dd>
 
       <dt>
-        Created at
+        Sent
       </dt>
       <dd>
         <%= time_ago_in_words(@the_message.created_at) %> ago
       </dd>
 
-      <dt>
+      <%#<dt>
         Updated at
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_message.updated_at) %> ago
-      </dd>
+        <%= time_ago_in_words(@the_message.updated_at) % ago
+      </dd> %>
     </dl>
   </div>
 </div>
