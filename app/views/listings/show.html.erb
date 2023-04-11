@@ -1,100 +1,51 @@
-<div>
-  <div>
-    <h1>
-     <%= @the_listing.title %> details
-    </h1>
-
-    <div>
-      <div>
-        <a href="/listings">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1><%= @the_listing.title %> details</h1>
+      <div class="mt-3">
+        <a href="/listings" class="btn btn-primary">
           Go back
         </a>
       </div>
+      <hr>
+      <dl class="row">
+        <dt class="col-sm-3">Title</dt>
+        <dd class="col-sm-9"><%= @the_listing.title %></dd>
+
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9"><%= @the_listing.description %></dd>
+
+        <dt class="col-sm-3">Price</dt>
+        <dd class="col-sm-9"><%= number_to_currency(@the_listing.price, unit: "$") %></dd>
+
+        <dt class="col-sm-3">Image</dt>
+        <dd class="col-sm-9">
+          <img src="<%= @the_listing.image %>" class="img-fluid">
+        </dd>
+
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9">
+          <% category = Category.find(@the_listing.category_id) %>
+          <%= category.name %>
+        </dd>
+
+        <dt class="col-sm-3">Seller</dt>
+        <dd class="col-sm-9"><%= @the_listing.seller.name %></dd> 
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9"><%= @the_listing.seller.location %></dd>
+
+        <dt class="col-sm-3">Created at</dt>
+        <dd class="col-sm-9"><%= time_ago_in_words(@the_listing.created_at) %> ago</dd>
+
+        <dt class="col-sm-3">Updated at</dt>
+        <dd class="col-sm-9"><%= time_ago_in_words(@the_listing.updated_at) %> ago</dd>
+      </dl>
     </div>
-
-    <dl>
-      <dt>
-        Title
-      </dt>
-      <dd>
-        <%= @the_listing.title %>
-      </dd>
-
-      <dt>
-        Description
-      </dt>
-      <dd>
-        <%= @the_listing.description %>
-      </dd>
-
-      <dt>
-        Price
-      </dt>
-      <dd>
-        <%= number_to_currency(@the_listing.price, unit: "$") %>
-      </dd>
-
-      <dt>
-        Image
-      </dt>
-      <dd>
-        <img src="<%= @the_listing.image %>" />
-      </dd>
-
-      <%#<dt>
-        Status
-      </dt>
-      <dd>
-        <%= @the_listing.status >
-      </dd%>
-
-      <dt>
-        Category
-      </dt>
-      <dd>
-         <% category = Category.find(@the_listing.category_id) %>
-         <%= category.name %>
-      </dd>
-
-      <dt>
-        Seller
-      </dt>
-      <dd>
-        <%= @the_listing.seller.name %>
-      </dd> 
-
-      <dt>
-        Location
-      </dt>
-      <dd>
-       <%= @the_listing.seller.location %>
-      </dd>
-
-      <%# <dt>
-        Buyer
-      </dt>
-      <dd>
-        <%= @the_listing.buyer_id >
-      </dd%> 
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_listing.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_listing.updated_at) %> ago
-      </dd>
-    </dl>
   </div>
 </div>
 
-<%# TODO: list all the messages for this listing %>
+
 <div class="conversation">
   <h3>Conversation</h3>
   <% @the_listing.messages.each do |message| %>
@@ -110,116 +61,82 @@
   <% end %>
 </div>
 
-
-<div>
+<div class="alert alert-info">
   Contact <%= @the_listing.seller.name %> in order to purchase <%= @the_listing.title %>
 </div>
 
-<div>
-  <%= form_with(model: @message, url: messages_path) do |form| %>
-    <%= form.hidden_field :sender_id, value: @current_user.id %>
-    <%= form.hidden_field :item_id, value: @the_listing.id %>
-    <%= form.hidden_field :recipient_id, value: @the_listing.seller.id %>
+<div class="card mb-3">
+  <div class="card-header">
+    <h5 class="card-title">Send a message to <%= @the_listing.seller.name %></h5>
+  </div>
+  <div class="card-body">
+    <%= form_with(model: @message, url: messages_path, class: "mb-3") do |form| %>
+      <%= form.hidden_field :sender_id, value: @current_user.id %>
+      <%= form.hidden_field :item_id, value: @the_listing.id %>
+      <%= form.hidden_field :recipient_id, value: @the_listing.seller.id %>
 
-    <div>
-      <%= form.label " #{@the_listing.seller.id} " %>
-      <%= form.text_area :body, class: "form-control", placeholder: "Message #{@the_listing.seller.id}" %>
-    </div>
+      <div class="form-group">
+        <%= form.label :body, "Message to #{@the_listing.seller.name}" %>
+        <%= form.text_area :body, class: "form-control", rows: 5, placeholder: "Type your message here" %>
+      </div>
 
-    <%= form.submit "Send" %>
-  <% end %>
+      <%= form.submit "Send Message", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
+
 
 <hr>
 
 
-<div>
-  <div>
-  <% if session.fetch(:user_id) == @the_listing.seller_id %>
-    <h2>
-      Edit listing
-    </h2>
+<div class="container">
+  <div class="row">
+    <% if session.fetch(:user_id) == @the_listing.seller_id %>
+      <div class="col-md-6 mx-auto">
+        <h2 class="text-center mb-4">Edit listing</h2>
 
-    <form action="/modify_listing/<%= @the_listing.id %>"  method="post" enctype="multipart/form-data" >
-      <div>
-        <label for="title_box">
-          Title
-        </label>
+        <form action="/modify_listing/<%= @the_listing.id %>" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title_box">Title</label>
+            <input type="text" id="title_box" name="query_title" value="<%= @the_listing.title %>" class="form-control">
+          </div>
 
-        <input type="text" id="title_box" name="query_title" value="<%= @the_listing.title %>">
+          <div class="form-group">
+            <label for="description_box">Description</label>
+            <input type="text" id="description_box" name="query_description" value="<%= @the_listing.description %>" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="price_box">Price</label>
+            <input type="text" id="price_box" name="query_price" value="<%= @the_listing.price %>" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="image_box">Image</label>
+            <input type="file" id="image_box" name="query_image" value="<%= @the_listing.image %>" class="form-control-file">
+          </div>
+
+          <div class="form-group">
+            <label for="category_id_box">Category</label>
+            <select id="category_id_box" name="query_category_id" class="form-control">
+              <% @categories.each do |category| %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+              <% end %>
+            </select>
+          </div>
+
+          <input type="hidden" id="seller_id_box" name="query_seller_id" value="<%= @the_listing.seller_id %>">
+
+          <input type="hidden" id="buyer_id_box" name="query_buyer_id" value="<%= @the_listing.buyer_id %>">
+
+          <div class="form-group">
+            <a href="/delete_listing/<%= @the_listing.id %>">Delete listing</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-4">Update listing</button>
+        </form>
       </div>
-
-      <div>
-        <label for="description_box">
-          Description
-        </label>
-
-        <input type="text" id="description_box" name="query_description" value="<%= @the_listing.description %>">
-      </div>
-
-      <div>
-        <label for="price_box">
-          Price
-        </label>
-
-        <input type="text" id="price_box" name="query_price" value="<%= @the_listing.price %>">
-      </div>
-
-      <div>
-        <label for="image_box">
-          Image
-        </label>
-
-        <input type="file" id="image_box" name="query_image" value="<%= @the_listing.image %>">
-      </div>
-
-      <%#<div>
-        <label for="status_box">
-          Status
-        </label>
-
-        <input type="text" id="status_box" name="query_status" value="<%= @the_listing.status >">
-      </div%>
-
-<div>
-  <label for="category_id_box">
-    Category
-  </label>
-  <select id="category_id_box" name="query_category_id">
-     <% @categories.each do |category| %>
-     <option value="<%= category.id %>"><%= category.name %>
-     </option>
-      <% end %>
-  </select>
-</div>
-
-      <div>
-        <label for="seller_id_box">
-
-        </label>
-
-        <input type="hidden" id="seller_id_box" name="query_seller_id" value="<%= @the_listing.seller_id %>">
-      </div>
-
-      <div>
-        <label for="buyer_id_box">
-          
-        </label>
-
-        <input type="hidden" id="buyer_id_box" name="query_buyer_id" value="<%= @the_listing.buyer_id %>">
-      </div>
-
-       <div>
-        <a href="/delete_listing/<%= @the_listing.id %>">
-          Delete listing
-        </a>
-      </div>
-
-      <button>
-        Update listing
-      </button>
-      <% end %>
-    </form>
+    <% end %>
   </div>
 </div>
 

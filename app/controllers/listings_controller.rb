@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
     @categories = Category.all
 
     @user = User.all
+
     
 
     render({ :template => "listings/show.html.erb" })
