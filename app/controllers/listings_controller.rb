@@ -2,15 +2,20 @@ class ListingsController < ApplicationController
   def index
     if @current_user == nil 
       render({ :template => "listings/welcome.html.erb" })
-      else 
-    matching_listings = Listing.all
+    else 
+      matching_listings = Listing.all
 
-    @list_of_listings = matching_listings.order({ :created_at => :desc })
-
-
-    render({ :template => "listings/index.html.erb" })
+      # Filter the listings by title if a search term is provided
+      if params[:search].present?
+        matching_listings = matching_listings.where("title LIKE ?", "%#{params[:search]}%")
       end
+
+      @list_of_listings = matching_listings.order({ :created_at => :desc })
+
+      render({ :template => "listings/index.html.erb" })
+    end
   end
+
 
   def show
     the_id = params.fetch("path_id")

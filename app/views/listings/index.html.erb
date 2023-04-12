@@ -1,19 +1,31 @@
-<div class="container my-5">
+<div class="container my-5 text-center">
   <div class="row">
     <div class="col-12">
-      <h1>List of all listings</h1>
+      <h1>Shop now</h1>
     </div>
   </div>
+</div>
+
 
   <hr>
 
+  <div class="container my-5 px-4">
   <div class="row">
     <div class="col-12">
-      <a class="btn btn-primary mb-3" href="/listings/new">Add a new listing</a>
+      <h1>Shop now</h1>
     </div>
   </div>
 
-  <hr>
+  <div class="row mb-3">
+    <div class="col-12">
+      <%= form_tag(listings_path, method: :get, class: "form-inline") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control mr-sm-2", type: "search", placeholder: "Search by title" %>
+        <%= button_tag type: :submit, class: "btn btn-outline-success my-2 my-sm-0" do %>
+          Search
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-12">
@@ -50,3 +62,4 @@
 
   <hr>
 </div>
+
