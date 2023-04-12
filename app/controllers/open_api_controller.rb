@@ -12,9 +12,14 @@ class OpenApiController < ApplicationController
     @response = client.chat(
       parameters: {
           model: "gpt-3.5-turbo", # Required.
-          messages: [{ role: "user", content: "Hello!"}], # Required.
+          messages: [
+            { role: "system", content: "You are a helpful assistant/instructor that has knowledge in golf equipment, and in the sport of golf."},
+            { role: "user", content: @the_advice }
+          ], # Required.
           temperature: 0.7,
       })
+
+     @result = @response.fetch("choices").at(0).fetch("message").fetch("content")
 
 
 
