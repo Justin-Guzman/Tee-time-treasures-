@@ -1,16 +1,23 @@
 class OpenApiController < ApplicationController
+  def index 
+
+    render({ :template => "open_api/index.html.erb"})
+  end
+
   def create
-    prompt = params[:question]
-    model_engine = 'text-davinci-002'
-    response = OpenAI::Completion.create(
-      engine: model_engine,
-      prompt: prompt,
-      max_tokens: 1024,
-      n: 1,
-      stop: "\n"
-    )
-    answer = response.choices.first.text.strip
-    render json: { answer: answer }
-    
+    @the_advice = params.fetch("advice")
+
+    client = OpenAI::Client.new(access_token: "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")
+
+    @response = client.chat(
+      parameters: {
+          model: "gpt-3.5-turbo", # Required.
+          messages: [{ role: "user", content: "Hello!"}], # Required.
+          temperature: 0.7,
+      })
+
+
+
+    render({ :template => "open_api/results.html.erb"})
   end
 end

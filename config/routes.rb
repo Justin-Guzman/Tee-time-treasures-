@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get("/listings/new", { :controller => "listings", :action => "new" })
 
-  # get("/categories/:category_id/items", { :controller => "categories", :action => "category" })
+  #get("/categories/:category_id/items", { :controller => "categories", :action => "category" })
 
   get("/categories/new", { :controller => "categories", :action => "category" })
 
@@ -95,9 +95,15 @@ Rails.application.routes.draw do
   # SIGN OUT
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
 
+  get("/conversations", { :controller => "conversations", :action => "index" })
+
+  
+
   get("/ask_me", { :controller => "open_api", :action => "index" })
 
-  get("/conversations", { :controller => "conversations", :action => "index" })
+  get("/fetch_gpt_response", { :controller => "open_api", :action => "create" })
+
+  
 
   #------------------------------
 

@@ -1,7 +1,17 @@
-<div class="container">
+<h1>Ask your instructor</h1>
+
+<form action="/fetch_gpt_response">
+  <label>How can I assist you?</label>
+
+  <input type="text" name="advice">
+
+  <button>Ask</button>
+</form>
+
+<%# <div class="container py-4">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <form id="question-form">
+      <form id="question-form" action="/fetch_gpt_response">
         <div class="form-group">
           <label for="question">Question:</label>
           <input type="text" class="form-control" id="question" name="question">
@@ -16,21 +26,4 @@
       <div id="answer"></div>
     </div>
   </div>
-</div>
-
-<script>
-  $(document).on('submit', '#question-form', function(event) {
-    event.preventDefault();
-    var question = $(this).serialize();
-    $.ajax({
-      url: '/questions',
-      method: 'POST',
-      data: question,
-      dataType: 'json',
-      success: function(response) {
-        $('#answer').html(response.answer);
-      }
-    });
-  });
-</script>
-
+</div> %>
