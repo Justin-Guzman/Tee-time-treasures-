@@ -8,14 +8,23 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("path_id")
+    @category_id = params.fetch(:path_id)
 
-    matching_categories = Category.where({ :id => the_id })
+    @matching_listings = Listing.where({ :category_id => @category_id })
 
-    @the_category = matching_categories.at(0)
-
-    render({ :template => "categories/show.html.erb" })
+    render template: "categories/show.html.erb"
   end
+  
+
+  # def show
+  #   the_id = params.fetch("path_id")
+
+  #   matching_categories = Category.where({ :id => the_id })
+
+  #   @the_category = matching_categories.at(0)
+
+  #   render({ :template => "categories/show.html.erb" })
+  # end
 
   def create
     the_category = Category.new

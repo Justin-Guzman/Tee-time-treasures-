@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get("/listings/new", { :controller => "listings", :action => "new" })
 
+  # get("/categories/:category_id/items", { :controller => "categories", :action => "category" })
+
   get("/categories/new", { :controller => "categories", :action => "category" })
 
   # CREATE
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
   get("/categories", { :controller => "categories", :action => "index" })
 
   get("/categories/:path_id", { :controller => "categories", :action => "show" })
+
+  
 
   # UPDATE
 

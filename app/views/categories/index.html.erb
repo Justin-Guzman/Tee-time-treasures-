@@ -4,8 +4,6 @@
   </div>
 </div>
 
-
-
 <div class="container" style="padding-left: 200px; padding-right: 150px;">
   <div class="text-center">
     <h2>
@@ -14,15 +12,14 @@
   </div>
 </div>
 
-
 <div class="container" style="padding-left: 100px; padding-right: 20px;">
   <div class="row">
     <% @list_of_categories.each do |a_category| %>
-      <div class="col-md-4  mb-4">
+      <div class="col-md-4 mb-4">
         <div class="card h-100">
           <div class="card-body text-center">
             <h5 class="card-title" style="font-size: 1.5rem;"><%= a_category.name %></h5>
-            <%#<a href="/categories/<%= a_category.id >" class="btn btn-primary">Show Details</a>%>
+            <a href="/categories/<%= a_category.id %>" class="btn btn-primary">View Items</a>
           </div>
         </div>
       </div>

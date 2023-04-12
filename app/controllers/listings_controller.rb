@@ -10,6 +10,14 @@ class ListingsController < ApplicationController
         matching_listings = matching_listings.where("title LIKE ?", "%#{params[:search]}%")
       end
 
+      # Filter the listings by price range if min and/or max price are provided
+      if params[:min_price].present?
+        matching_listings = matching_listings.where("price >= ?", params[:min_price])
+      end
+      if params[:max_price].present?
+        matching_listings = matching_listings.where("price <= ?", params[:max_price])
+      end
+
       @list_of_listings = matching_listings.order({ :created_at => :desc })
 
       render({ :template => "listings/index.html.erb" })
