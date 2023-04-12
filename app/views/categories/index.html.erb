@@ -1,12 +1,12 @@
-<div class="container my-5">
+<div class="container my-5" style="padding-left: 200px; padding-right: 150px;">
   <div class="text-center">
-    <h1 style="font-size: 3rem;">List of all categories</h1>
+    <h1 style="font-size: 5rem;">Categories</h1>
   </div>
 </div>
 
-<hr class="my-5">
 
-<div class="container">
+
+<div class="container" style="padding-left: 200px; padding-right: 150px;">
   <div class="text-center">
     <h2>
       <a href="categories/new" class="btn btn-primary" style="font-size: 1.5rem;">Add a new category</a>
@@ -14,31 +14,18 @@
   </div>
 </div>
 
-<hr class="my-5">
 
-<div class="container">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="text-center" style="font-size: 1.5rem;">Name</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @list_of_categories.each do |a_category| %>
-        <tr>
-          <td class="text-center" style="font-size: 1.2rem;"><%= a_category.name %></td>
-          <%#<td>
-            <a href="/categories/<%= a_category.id %">
-              Show details
-            </a>
-          </td%>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="container" style="padding-left: 100px; padding-right: 20px;">
+  <div class="row">
+    <% @list_of_categories.each do |a_category| %>
+      <div class="col-md-4  mb-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title" style="font-size: 1.5rem;"><%= a_category.name %></h5>
+            <%#<a href="/categories/<%= a_category.id >" class="btn btn-primary">Show Details</a>%>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<hr class="my-5">

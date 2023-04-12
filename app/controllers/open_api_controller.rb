@@ -13,8 +13,4 @@ class OpenApiController < ApplicationController
     render json: { answer: answer }
     
   end
-  def index
-
-    
-  end
 end
