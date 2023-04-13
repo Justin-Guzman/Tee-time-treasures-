@@ -1,61 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Messages</h1>
-    </div>
-  </div>
-</div>
-
-<hr>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>Add a new message</h2>
-
-      <form action="/insert_message" method="post">
-        <div class="form-group">
-          <label for="body_box">Body</label>
-          <input type="text" class="form-control" id="body_box" name="query_body">
-        </div>
-
-        <div class="form-group">
-          <label for="listing_id_box">Listing</label>
-          <input type="text" class="form-control" id="listing_id_box" name="query_listing_id">
-        </div>
-
-        <div class="form-group">
-          <label for="sender_id_box">Sender</label>
-          <input type="text" class="form-control" id="sender_id_box" name="query_sender_id">
-        </div>
-
-        <div class="form-group">
-          <label for="recipient_id_box">Recipient</label>
-          <input type="text" class="form-control" id="recipient_id_box" name="query_recipient_id">
-        </div>
-
-        <button class="btn btn-primary">Create message</button>
-      </form>
-    </div>
-  </div>
-</div>
-
 <div class="container mt-4">
   <div class="row">
     <div class="col">
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Body</th>
+            <th>Text</th>
             <th>Listing</th>
-            <th>Sender</th>
-            <th>Recipient</th>
+            <th>From</th>
+            <th></th>
             <th>Sent</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @list_of_messages.each do |a_message| %>
+          <% @list_of_messages.select { |message| message.sender == @current_user || message.recipient == @current_user }.each do |a_message| %>
           <tr>
             <td><%= a_message.body %></td>
             <td><%= a_message.listing.title %></td>
@@ -70,5 +28,3 @@
     </div>
   </div>
 </div>
-
-<hr>

@@ -7,7 +7,7 @@ class OpenApiController < ApplicationController
   def create
     @the_advice = params.fetch("advice")
 
-    client = OpenAI::Client.new(access_token: "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")
+    client = OpenAI::Client.new(access_token: "")
 
     @response = client.chat(
       parameters: {
