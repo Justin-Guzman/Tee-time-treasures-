@@ -160,6 +160,7 @@ GEM
       rchardet (~> 1.8)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     hashdiff (1.0.1)
     htmlbeautifier (1.4.2)
     http (5.0.4)
@@ -405,6 +406,7 @@ DEPENDENCIES
   draft_generators!
   factory_bot_rails
   faker
+  gmaps4rails
   grade_runner!
   htmlbeautifier
   http

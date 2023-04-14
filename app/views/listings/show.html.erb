@@ -52,7 +52,11 @@
     <div class="message <%= message.sender == @current_user ? "sent" : "received" %>">
       <div class="content">
         <div class="meta">
-          <span class="author"><%= message.sender.name %></span>
+          <% if message.sender == @current_user %>
+            <span class="author" style="color: blue;"><%= message.sender.name %></span>
+          <% else %>
+            <span class="author" style="color: black;"><%= message.sender.name %></span>
+          <% end %>
           <span class="time"><%= message.created_at.strftime("%b %d, %Y %I:%M %p") %></span>
         </div>
         <div class="text"><%= message.body %></div>
@@ -60,6 +64,7 @@
     </div>
   <% end %>
 </div>
+
 
 <div class="alert alert-info">
   Contact <%= @the_listing.seller.name %> in order to purchase <%= @the_listing.title %>

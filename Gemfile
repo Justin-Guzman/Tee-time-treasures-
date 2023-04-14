@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem "ruby-openai"
+gem 'gmaps4rails'
 
 gem "carrierwave"
 gem "cloudinary"
