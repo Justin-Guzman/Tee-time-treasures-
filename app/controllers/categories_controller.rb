@@ -9,15 +9,15 @@ class CategoriesController < ApplicationController
 
   def show
     @category_id = params.fetch(:path_id)
-
-    if params[:search].present?
-      matching_listings = matching_listings.where("title LIKE ?", "%#{params[:search]}%")
-    end
-
     @matching_listings = Listing.where({ :category_id => @category_id })
-
+  
+    if params[:search].present?
+      @matching_listings = @matching_listings.where("title LIKE ?", "%#{params[:search]}%")
+    end
+  
     render template: "categories/show.html.erb"
   end
+  
   
 
   # def show
