@@ -53,64 +53,35 @@
       <dd>
         <%= time_ago_in_words(@the_message.created_at) %> ago
       </dd>
-
-      <%#<dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_message.updated_at) % ago
-      </dd> %>
     </dl>
   </div>
 </div>
 
 <hr>
 
-
 <div>
   <div>
     <h2>
-      Edit message
+      Reply to <%= @the_message.sender.name %>
     </h2>
 
-    <form action="/modify_message/<%= @the_message.id %>"  method="post" >
-      <div>
-        <label for="body_box">
-          Body
-        </label>
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">Send a message to <%= @the_message.sender.name %></h5>
+  </div>
+  <div class="card-body">
+    <%= form_with(model: @message, url: messages_path, class: "mb-3") do |form| %>
+      <%= form.hidden_field :sender_id, value: @current_user.id %>
+      <%= form.hidden_field :recipient_id, value: @the_message.sender.id %>
+      <%= form.hidden_field :listing_id, value: @the_message.listing.id %>
 
-        <input type="text" id="body_box" name="query_body" value="<%= @the_message.body %>">
+      <div class="form-group">
+        <%= form.label :body, "Message to #{@the_message.sender.name}" %>
+        <%= form.text_area :body, class: "form-control", rows: 5, placeholder: "Type your message here" %>
       </div>
 
-      <div>
-        <label for="listing_id_box">
-          Listing
-        </label>
-
-        <input type="text" id="listing_id_box" name="query_listing_id" value="<%= @the_message.listing_id %>">
-      </div>
-
-      <div>
-        <label for="sender_id_box">
-          Sender
-        </label>
-
-        <input type="text" id="sender_id_box" name="query_sender_id" value="<%= @the_message.sender_id %>">
-      </div>
-
-      <div>
-        <label for="recipient_id_box">
-          Recipient
-        </label>
-
-        <input type="text" id="recipient_id_box" name="query_recipient_id" value="<%= @the_message.recipient_id %>">
-      </div>
-
-      <button>
-        Update message
-      </button>
-    </form>
+      <%= form.submit "Send Message", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 
-<hr>

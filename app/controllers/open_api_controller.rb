@@ -21,8 +21,6 @@ class OpenApiController < ApplicationController
 
      @result = @response.fetch("choices").at(0).fetch("message").fetch("content")
 
-
-
     render({ :template => "open_api/results.html.erb"})
   end
 end

@@ -37,5 +37,33 @@
         </a>
       </form>
     </div>
-  </div>
+
+<div class="col-md-6">
+  <h5 class="text-center mt-5 mb-4">
+    Your Listings
+  </h5>
+  <% if @current_user.listings.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @current_user.listings.each do |listing| %>
+          <tr>
+             <td><img src="<%= listing.image %>" class="img-thumbnail"></td>
+            <td><%= listing.title %></td>
+           <td> <a href="/listings/<%= listing.id %>" class="btn btn-sm btn-primary">
+                  Show details
+                </a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You haven't posted any listings yet.</p>
+  <% end %>
 </div>

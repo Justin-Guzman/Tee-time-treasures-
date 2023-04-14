@@ -1,26 +1,58 @@
 <div class="container mt-4">
   <div class="row">
     <div class="col">
+      <h3>Messages sent</h3>
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th>To</th>
             <th>Text</th>
-            <th>Listing</th>
-            <th>From</th>
-            <th></th>
+            <th>Listing</th>           
+            
             <th>Sent</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @list_of_messages.select { |message| message.sender == @current_user || message.recipient == @current_user }.each do |a_message| %>
+          <% @list_of_messages.select { |message| message.sender == @current_user }.each do |sent_message| %>
           <tr>
-            <td><%= a_message.body %></td>
-            <td><%= a_message.listing.title %></td>
-            <td><%= a_message.sender.name %></td>
-            <td><%= a_message.recipient.name %></td>
-            <td><%= time_ago_in_words(a_message.created_at) %> ago</td>
-            <td><a href="/messages/<%= a_message.id %>" class="btn btn-primary">Show details</a></td>
+            <td><%= sent_message.recipient.name %></td>
+            <td><%= sent_message.body %></td>
+            <td><%= sent_message.listing.title %></td>
+            
+            
+            <td><%= time_ago_in_words(sent_message.created_at) %> ago</td>
+            <td><a href="/messages/<%= sent_message.id %>" class="btn btn-primary">Send message</a></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row mt-4">
+    <div class="col">
+      <h3>Messages received</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>Text</th>
+            <th>Listing</th>
+            
+            
+            <th>Received</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @list_of_messages.select { |message| message.recipient == @current_user }.each do |received_message| %>
+          <tr>
+            <td><%= received_message.sender.name %></td>
+            <td><%= received_message.body %></td>
+            <td><%= received_message.listing.title %></td>
+            <td><%= time_ago_in_words(received_message.created_at) %> ago</td>
+            <td><a href="/messages/<%= received_message.id %>" class="btn btn-primary">Reply</a></td>
           </tr>
           <% end %>
         </tbody>
