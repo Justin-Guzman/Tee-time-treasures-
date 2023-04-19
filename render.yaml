@@ -16,5 +16,5 @@ services:
         fromDatabase:
           name: testdeploy
           property: connectionString
-      - key: RAILS_MASTER_KEY
+      - key: abb03cc12184776b9d14262f29d79414
         sync: false
