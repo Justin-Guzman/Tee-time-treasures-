@@ -2,7 +2,7 @@ databases:
   - name: thegolfexchange 
     plan: free
     databaseName: thegolfexchange
-    user: testdeploy
+    user: thegolfexchange
 
 services:
   - type: web
@@ -14,7 +14,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: testdeploy
+          name: thegolfexchange
           property: connectionString
       - key: abb03cc12184776b9d14262f29d79414
         sync: false
