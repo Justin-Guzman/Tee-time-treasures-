@@ -1,12 +1,12 @@
 databases:
-  - name: The-Golf-Exchange
+  - name: thegolfexchange
     plan: free
-    databaseName: The-Golf-Exchange
+    databaseName: thegolfexchange
     user: testdeploy
 
 services:
   - type: web
-    name: The-Golf-Exchange
+    name: thegolfexchange
     plan: free
     env: ruby
     buildCommand: "./bin/render-build.sh"
