@@ -1,5 +1,5 @@
 databases:
-  - name: thegolfexchange
+  - name: thegolfexchange 
     plan: free
     databaseName: thegolfexchange
     user: testdeploy
