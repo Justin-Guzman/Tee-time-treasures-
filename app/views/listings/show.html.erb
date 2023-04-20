@@ -32,21 +32,23 @@
         <dt class="col-sm-3">Seller</dt>
         <dd class="col-sm-9"><%= @the_listing.seller.name %></dd> 
 
-
-
         <dt class="col-sm-3">Location</dt>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.648447481393!2d-87.63722!3d41.8789096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2cbf6b9278ed%3A0xebe7b7245b9d51c4!2s200%20South%20Wacker%20Drive%2C%20200%20S%20Wacker%20Dr%2C%20Chicago%2C%20IL%2060606!5e0!3m2!1sen!2sus!4v1681937440548!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <dd class="col-sm-9"><%= @the_listing.seller.location %></dd>
-
+        <dt class="col-sm-3">Map</dt>
+        <dd class="col-sm-9">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d190221.21981742076!2d-87.87926229046923!3d41.84538059559168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL!5e0!3m2!1sen!2sus!4v1681947447835!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </dd>
+      
         <dt class="col-sm-3">Created at</dt>
         <dd class="col-sm-9"><%= time_ago_in_words(@the_listing.created_at) %> ago</dd>
 
         <dt class="col-sm-3">Updated at</dt>
         <dd class="col-sm-9"><%= time_ago_in_words(@the_listing.updated_at) %> ago</dd>
-      </dl>
+      </dl> 
     </div>
   </div>
 </div>
+
 
 
 <div class="conversation">
@@ -76,12 +78,12 @@
 
 
 <div class="alert alert-info">
-  Contact <%= @the_listing.seller.name %> in order to purchase <%= @the_listing.title %>
+  Contact in order to purchase <%= @the_listing.title %>
 </div>
 
 <div class="card mb-3">
   <div class="card-header">
-    <h5 class="card-title">Send a message to <%= @the_listing.seller.name %></h5>
+    <h5 class="card-title">Send a message </h5>
   </div>
   <div class="card-body">
     <%= form_with(model: @message, url: messages_path, class: "mb-3") do |form| %>
@@ -90,7 +92,7 @@
       <%= form.hidden_field :recipient_id, value: @the_listing.seller.id %>
 
       <div class="form-group">
-        <%= form.label :body, "Message to #{@the_listing.seller.name}" %>
+        <%= form.label :body, "Form below" %>
         <%= form.text_area :body, class: "form-control", rows: 5, placeholder: "Type your message here" %>
       </div>
 
